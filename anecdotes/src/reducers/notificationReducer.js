@@ -1,4 +1,5 @@
 const anecdotesAtStart = ''
+let timer
 
 export const newNotification = (content, time) => {
   return async dispatch => {
@@ -6,7 +7,8 @@ export const newNotification = (content, time) => {
       type: 'NEW_NOTIFICATION',
       data: {content}
     })
-    setTimeout(() => {
+    clearTimeout(timer)
+    timer = setTimeout(() => {
       dispatch ({
         type: 'REMOVE_NOTIFICATION',
       })
